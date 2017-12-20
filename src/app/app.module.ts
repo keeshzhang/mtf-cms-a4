@@ -8,17 +8,17 @@ import { MatIconModule, MatToolbarModule, MatMenuModule, MatCardModule, MatButto
 
 // services
 import { AuthGuard, AuthenticationService, UserService,
-         BillService } from './_services/_index';
+         BillService, ArticleService } from './_services/_index';
 // import { AuthenticationService, UserService } from './_services/_index';
 
 // directives
-import { UserInfoCardDirective } from './_directives/_index';
+import { ArticleTagDirective } from './_directives/_index';
 
 // components
 import { AppComponent } from './app.component';
 import { LoginComponent, SignupComponent,
          LoginEmailComponent, MembersComponent,
-         BillsComponent, IndexComponent } from './_components/_index';
+         BillsComponent, IndexComponent, ArticlePageComponent } from './_components/_index';
 
 
 import { routers } from './routers/app.router';
@@ -28,7 +28,7 @@ import { DateFormatPipe } from './_pipelines/_index';
 @NgModule({
   declarations: [
 
-    UserInfoCardDirective,
+    ArticleTagDirective,
 
     AppComponent,
     LoginComponent,
@@ -36,7 +36,7 @@ import { DateFormatPipe } from './_pipelines/_index';
     LoginEmailComponent,
     MembersComponent,
     IndexComponent,
-    BillsComponent,
+    BillsComponent, ArticlePageComponent,
 
     DateFormatPipe
   ],
@@ -48,7 +48,7 @@ import { DateFormatPipe } from './_pipelines/_index';
   ],
   providers: [
     AuthGuard,
-    AuthenticationService, UserService, BillService
+    AuthenticationService, UserService, BillService, ArticleService
   ],
   bootstrap: [AppComponent]
 })

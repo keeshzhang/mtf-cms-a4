@@ -1,0 +1,32 @@
+
+
+
+  <div class= "clearfix" style="width: 100%;   padding-bottom: .5em;">
+
+    <span appArticleTag="'hotpink'">{{ articlePage.type }}</span>
+    <span appArticleTag="'hotpink'">{{ articlePage.tags }}</span>
+  </div>
+
+  <div class=" clearfix" id="editor" style="width: 100%;">
+
+    <form action="/save" method="post" style="margin-top: .35em;">
+
+      <div class="form-group">
+
+        <input type="hidden" name="url" value="{{ articlePage.url }}">
+        <input type="hidden" name="name" value="{{ articlePage.name }}">
+
+        <textarea class="form-control" id="markdown" name="markdown" rows="15">{{ articlePage.name_base64 }}</textarea>
+
+      </div>
+
+      <div style="text-align: right;">
+        <button type="submit" class="basic-btn button">保存</button>
+        <button type="submit" class="basic-btn button">预览</button>
+        <button type="submit" class="basic-btn button">发布</button>
+        <button type="submit" class="basic-btn button">撤回</button>
+        <button type="submit" formaction="/delete" class="basic-btn button" style="background-color: brown;">删除</button>
+      </div>
+    </form>
+
+  </div>

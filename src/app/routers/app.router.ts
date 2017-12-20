@@ -8,6 +8,7 @@ import { LoginEmailComponent } from '../_components/login-email/login-email.comp
 import { SignupComponent } from '../_components/signup/signup.component';
 import { MembersComponent } from '../_components/members/members.component';
 import { BillsComponent } from '../_components/bills/bills.component';
+import { ArticlePageComponent } from '../_components/article/article_page.component';
 
 // services
 import { AuthGuard } from '../_services/auth.guard.service';
@@ -27,6 +28,8 @@ export const router: Routes = [
   { path: '404', component: IndexComponent },
   { path: 'index', component: IndexComponent },
   { path: 'login', component: IndexComponent },
+  { path: 'articles/:createTimestamp/:name', component: ArticlePageComponent },
+
   { path: 'registry', component: SignupComponent },
   { path: 'login-email', component: LoginEmailComponent },    // angular router
   { path: 'members', component: MembersComponent },

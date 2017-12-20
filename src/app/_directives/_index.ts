@@ -1,1 +1,1 @@
-export { UserInfoCardDirective } from './user.info.card.directive';
+export { ArticleTagDirective } from './article.tag.directive';
