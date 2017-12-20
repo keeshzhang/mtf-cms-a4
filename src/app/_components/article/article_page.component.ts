@@ -19,11 +19,12 @@ import {ArticleEntity} from '../../_entities/article.entity';
   templateUrl: './article_page.component.html',
   styleUrls: ['./article_page.component.css']
 })
-export class ArticlePageComponent implements OnInit, OnChanges {
+export class ArticlePageComponent implements OnInit {
 
   state: String = '';
   articlePage: any;
   error: any;
+  email: string;
 
   createTimestamp: string;
   artileName: string;
@@ -32,6 +33,7 @@ export class ArticlePageComponent implements OnInit, OnChanges {
 
   constructor(private route: ActivatedRoute, private articleService: ArticleService) {
     this.articlePage = {};
+    this.email = 'email @@';
   }
 
   ngOnInit() {
@@ -51,14 +53,23 @@ export class ArticlePageComponent implements OnInit, OnChanges {
 
         this.articlePage = response.data;
 
+        this.artileName = response.data['name'];
+
       });
 
 
   }
 
-  ngOnChanges() {
+
+  onSubmit(formData) {
 
 
+    if (!formData.valid) {
+      return;
+    }
+
+
+    debugger;
   }
 
 

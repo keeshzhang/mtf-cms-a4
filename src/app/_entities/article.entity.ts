@@ -6,6 +6,7 @@ export interface ArticleEntity {
   name_base64: String,
   content: String,
   keywords: String,
+  description: String,
   type: String,
   tags: String,
   created_at: Date,

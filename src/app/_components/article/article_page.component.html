@@ -3,13 +3,37 @@
 
   <div class= "clearfix" style="width: 100%;   padding-bottom: .5em;">
 
-    <span appArticleTag="'hotpink'">{{ articlePage.type }}</span>
+    <span appArticleTag="'hotpink'">{{ articlePage.type }}, {{ articlePage.name }}</span>
     <span appArticleTag="'hotpink'">{{ articlePage.tags }}</span>
   </div>
 
+
+
   <div class=" clearfix" id="editor" style="width: 100%;">
 
-    <form action="/save" method="post" style="margin-top: .35em;">
+    <form #formData="ngForm" action="/save" method="post" style="margin-top: .85em;">
+
+      <div class="form-group">
+        <label for="artileName" class="col-sm-2 control-label">文章标题</label>
+        <div class="col-sm-10">
+          <input type="text"  class="form-control" id="artileName" name="artileName"
+                 [(ngModel)]="articlePage.name"  placeholder="文章标题" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="artileKeywords" class="col-sm-2 control-label">文章关键字</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="artileKeywords" name="artileKeywords"
+                 [(ngModel)]="articlePage.keywords" placeholder="文章关键字">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="articleDesc" class="col-sm-2 control-label">文章描述</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="articleDesc" name="articleDesc"
+                 [(ngModel)]="articlePage.description" placeholder="文章描述">
+        </div>
+      </div>
 
       <div class="form-group">
 
@@ -21,7 +45,7 @@
       </div>
 
       <div style="text-align: right;">
-        <button type="submit" class="basic-btn button">保存</button>
+        <button type="submit" (click)="onSubmit(formData)" [disabled]="!formData.valid" class="basic-btn button">保存</button>
         <button type="submit" class="basic-btn button">预览</button>
         <button type="submit" class="basic-btn button">发布</button>
         <button type="submit" class="basic-btn button">撤回</button>
