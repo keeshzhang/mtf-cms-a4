@@ -28,4 +28,18 @@ export class ArticleService {
   }
 
 
+  post(createdAt: string, articleName: string, data: any): Observable<RestResponse> {
+
+    return this.http.post('/articles/' + createdAt + '/' + articleName + '.json', data)
+      .map((response: RestResponse) => {
+
+        if (response.error) {
+          return response.message[0];
+        }
+
+        return response;
+      });
+
+  }
+
 }

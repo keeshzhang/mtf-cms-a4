@@ -11,13 +11,13 @@
 
   <div class=" clearfix" id="editor" style="width: 100%;">
 
-    <form #formData="ngForm" action="/save" method="post" style="margin-top: .85em;">
+    <form #formData="ngForm" style="margin-top: .85em;">
 
       <div class="form-group">
-        <label for="artileName" class="col-sm-2 control-label">文章标题</label>
+        <label for="artileTitle" class="col-sm-2 control-label">文章标题</label>
         <div class="col-sm-10">
-          <input type="text"  class="form-control" id="artileName" name="artileName"
-                 [(ngModel)]="articlePage.name"  placeholder="文章标题" required>
+          <input type="text"  class="form-control" id="artileTitle" name="artileTitle"
+                 [(ngModel)]="articlePage.title"  placeholder="文章标题" required>
         </div>
       </div>
       <div class="form-group">
@@ -40,7 +40,8 @@
         <input type="hidden" name="url" value="{{ articlePage.url }}">
         <input type="hidden" name="name" value="{{ articlePage.name }}">
 
-        <textarea class="form-control" id="markdown" name="markdown" rows="15">{{ articlePage.name_base64 }}</textarea>
+        <textarea class="form-control" id="markdown" name="markdown" rows="15">{{ articlePage.name_base64 }},
+        {{ articleName }}</textarea>
 
       </div>
 

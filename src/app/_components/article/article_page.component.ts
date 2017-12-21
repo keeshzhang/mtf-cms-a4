@@ -24,26 +24,25 @@ export class ArticlePageComponent implements OnInit {
   state: String = '';
   articlePage: any;
   error: any;
-  email: string;
 
   createTimestamp: string;
-  artileName: string;
+  articleName: string;
 
   dateFormatPipeFilter: any;
 
   constructor(private route: ActivatedRoute, private articleService: ArticleService) {
     this.articlePage = {};
-    this.email = 'email @@';
   }
 
   ngOnInit() {
 
     this.route.params.subscribe((params: Params): void => {
       this.createTimestamp = params['createTimestamp'] + '';
-      this.artileName = params['name'];
+      this.articleName = params['name'];
+
     });
 
-    this.articleService.get(this.createTimestamp, '5oiR55qEIOesrDIgXyAvICMgLiBhc2RmICMkJV4mKiooIUAjJCUlKSgqJmDkuKrmlofnq6A')
+    this.articleService.get(this.createTimestamp, this.articleName)
       .subscribe(response => {
 
         if (response.error) {
@@ -53,23 +52,29 @@ export class ArticlePageComponent implements OnInit {
 
         this.articlePage = response.data;
 
-        this.artileName = response.data['name'];
-
-      });
-
+    });
 
   }
 
-
   onSubmit(formData) {
-
 
     if (!formData.valid) {
       return;
     }
 
+    this.articleService.post(this.createTimestamp, this.articleName, this.articlePage)
+      .subscribe(response => {
 
-    debugger;
+        if (response.error) {
+          this.error = response.message[0];
+          return;
+        }
+
+        window.location.href = response.data.url;
+
+    });
+
+
   }
 
 

@@ -1,7 +1,7 @@
 
 export interface ArticleEntity {
   url: string,
-  url_base64: String,
+  url_escape: String,
   name: string,
   name_base64: String,
   content: String,
