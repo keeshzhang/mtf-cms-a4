@@ -70,6 +70,8 @@ export class ArticlePageComponent implements OnInit {
           return;
         }
 
+        debugger;
+
         window.location.href = response.data.url;
 
     });
