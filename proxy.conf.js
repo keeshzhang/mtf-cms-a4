@@ -15,7 +15,7 @@ const PROXY_CONFIG = [
       "/jquery",
       "/gallery"
       ,
-      "/articles/1513749666348/5oiR55qEX+esrDJfYXNkZlKeeshaAAaABCzzkuKrmlofnq6Bf.json"
+      "/articles/1513749666348/5oiR55qEX+esrDJfYXNkZlKeeshaAAaABCzzkuKrmlofnq6AyMw.json"
 
     ],
     target: "http://localhost:9180",
