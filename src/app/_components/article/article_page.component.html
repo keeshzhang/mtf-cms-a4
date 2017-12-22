@@ -35,13 +35,15 @@
         </div>
       </div>
 
+      <!--<div [froalaEditor]>Hello, Froala!</div>-->
+
       <div class="form-group">
 
         <input type="hidden" name="url" value="{{ articlePage.url }}">
         <input type="hidden" name="name" value="{{ articlePage.name }}">
 
-        <textarea class="form-control" id="markdown" name="markdown" rows="15">{{ articlePage.name_base64 }},
-        {{ articleName }}</textarea>
+        <textarea class="form-control" [(ngModel)]="articlePage.html_content"
+                  id="markdown" name="markdown" rows="15"></textarea>
 
       </div>
 
