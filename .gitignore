@@ -42,3 +42,5 @@ yarn-error.log
 .DS_Store
 Thumbs.db
 node_modules.bak
+node_modules.bak.4.3.5
+node_modules.bak.4.4.3

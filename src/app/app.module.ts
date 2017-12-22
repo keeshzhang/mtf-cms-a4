@@ -3,9 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+//
+// import * as $ from 'jquery';
+// window['$'] = $;
+// window['jQuery'] = $;
 
 // angular html editer: https://github.com/froala/angular-froala-wysiwyg
-// import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 import { MatIconModule, MatToolbarModule, MatMenuModule, MatCardModule, MatButtonModule } from '@angular/material';
 
@@ -46,7 +50,7 @@ import { DateFormatPipe } from './_pipelines/_index';
   imports: [
     BrowserModule,
     HttpClientModule, FormsModule, BrowserAnimationsModule,
-    // FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
+    FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
     MatIconModule, MatToolbarModule, MatMenuModule, MatCardModule, MatButtonModule,
     routers
   ],
