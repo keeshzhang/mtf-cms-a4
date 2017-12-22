@@ -25,18 +25,21 @@ export class ArticlePageComponent implements OnInit {
   articlePage: any;
   error: any;
 
+  isArticlePreview: boolean;
   createTimestamp: string;
   articleName: string;
 
   dateFormatPipeFilter: any;
 
-  constructor(private route: ActivatedRoute, private articleService: ArticleService) {
+  constructor(private activatedRoute: ActivatedRoute, private articleService: ArticleService) {
     this.articlePage = {};
   }
 
   ngOnInit() {
 
-    this.route.params.subscribe((params: Params): void => {
+    this.isArticlePreview = this.activatedRoute.snapshot.queryParams.preview != null;
+
+    this.activatedRoute.params.subscribe((params: Params): void => {
       this.createTimestamp = params['createTimestamp'] + '';
       this.articleName = params['name'];
 
@@ -50,6 +53,7 @@ export class ArticlePageComponent implements OnInit {
           return;
         }
 
+        debugger;
         this.articlePage = response.data;
 
     });
@@ -62,8 +66,6 @@ export class ArticlePageComponent implements OnInit {
       return;
     }
 
-    debugger;
-
     this.articleService.post(this.createTimestamp, this.articleName, this.articlePage)
       .subscribe(response => {
 
@@ -71,8 +73,6 @@ export class ArticlePageComponent implements OnInit {
           this.error = response.message[0];
           return;
         }
-
-        debugger;
 
         window.location.href = response.data.url;
 

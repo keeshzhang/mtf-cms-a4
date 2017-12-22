@@ -14,9 +14,7 @@ const PROXY_CONFIG = [
       "/fonts",
       "/jquery",
       "/gallery"
-      ,
-      "/articles/1513749666348/5oiR55qEX+esrDJfYXNkZlKeeshaAAaABCzzkuKrmlofnq6AyMw.json"
-      , "/articles/1513749666348/5oiR55qEX+esrDJfYXNkZlKeeshaAAaABCzzkuKrmlofnq6AyM182NjY.json"
+      , "/articles/1545369120000/5oiR55qEX+esrDJfYXNkZlKeeshaAAaABCzzkuKrmlofnq6AyMw.json"
 
     ],
     target: "http://localhost:9180",

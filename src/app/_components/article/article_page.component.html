@@ -1,13 +1,16 @@
 
 
-
+<div *ngIf="!isArticlePreview">
   <div class= "clearfix" style="width: 100%;   padding-bottom: .5em;">
-
     <span appArticleTag="'hotpink'">{{ articlePage.type }}</span>
     <span appArticleTag="'hotpink'">{{ articlePage.tags }}</span>
   </div>
 
+  <h1 class="display-4 article_title">{{ articlePage.title }} {{isArticlePreview}}</h1>
 
+  <div style="    color: gray;">
+    创建于: {{ articlePage.created_at }}, 最后更新: {{ articlePage.last_updated }}
+  </div>
 
   <div class=" clearfix" id="editor" style="width: 100%;">
 
@@ -39,7 +42,7 @@
 
       <div style="text-align: right; margin-top: 2em;">
         <button type="submit" (click)="onSubmit(formData)" [disabled]="!formData.valid" class="basic-btn button">保存</button>
-        <button type="submit" class="basic-btn button">预览</button>
+        <a target="_self" href="/articles/{{createTimestamp}}/{{articleName}}?preview" class="basic-btn button">预览</a>
         <button type="submit" class="basic-btn button">发布</button>
         <button type="submit" class="basic-btn button">撤回</button>
         <button type="submit" formaction="/delete" class="basic-btn button" style="background-color: brown;">删除</button>
@@ -47,3 +50,5 @@
     </form>
 
   </div>
+</div>
+
