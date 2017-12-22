@@ -39,3 +39,7 @@
 .article_title {
   padding-top: .3em;margin-bottom:0;font-size: 2rem;
 }
+
+.article_content {
+  width: 100%;
+}
