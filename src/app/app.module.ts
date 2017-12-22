@@ -8,7 +8,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // window['$'] = $;
 // window['jQuery'] = $;
 
-// angular html editer: https://github.com/froala/angular-froala-wysiwyg
+// angular html editer:
+// https://github.com/froala/angular-froala-wysiwyg
+// https://www.froala.com/wysiwyg-editor/docs/overview
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 import { MatIconModule, MatToolbarModule, MatMenuModule, MatCardModule, MatButtonModule } from '@angular/material';

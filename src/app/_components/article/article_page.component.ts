@@ -62,6 +62,8 @@ export class ArticlePageComponent implements OnInit {
       return;
     }
 
+    debugger;
+
     this.articleService.post(this.createTimestamp, this.articleName, this.articlePage)
       .subscribe(response => {
 
