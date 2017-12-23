@@ -1,12 +1,12 @@
 
 
 <div>
-  <div *ngIf='!isArticlePreview && articlePage.article_status == "pending"' class= "clearfix" style="width: 100%;   padding-bottom: .5em;">
+  <div *ngIf='_user && !isArticlePreview && articlePage.article_status == "pending"' class= "clearfix" style="width: 100%;   padding-bottom: .5em;">
     <span appArticleTag="'hotpink'">{{ articlePage.type }}</span>
     <span appArticleTag="'hotpink'">{{ articlePage.tags }}</span>
   </div>
 
-  <h1 *ngIf='!isArticlePreview && articlePage.article_status == "pending"' class="display-4 article_title">
+  <h1 *ngIf='_user && !isArticlePreview && articlePage.article_status == "pending"' class="display-4 article_title">
     {{ articlePage.title }} {{articlePage.article_status}}</h1>
 
   <div style="    color: gray;">
@@ -17,7 +17,7 @@
     <span *ngIf='articlePage.article_status == "deleted"'>已删除</span>
   </div>
 
-  <div *ngIf='!isArticlePreview && articlePage.article_status == "pending"' class=" clearfix" id="editor" style="width: 100%;">
+  <div *ngIf='_user && !isArticlePreview && articlePage.article_status == "pending"' class=" clearfix" id="editor" style="width: 100%;">
 
     <form #formData="ngForm" style="margin-top: .85em;">
 
@@ -55,7 +55,7 @@
 
   </div>
 
-  <form #formData="ngForm" style="margin-top: .85em;">
+  <form *ngIf="_user" #formData="ngForm" style="margin-top: .85em;">
     <div *ngIf='isArticlePreview || articlePage.article_status == "published"' style="display: inline-block;position: fixed;right: 40px; bottom: 0;">
       <a *ngIf='isArticlePreview && articlePage.article_status != "published"' target="_self"
           href="/articles/{{createTimestamp}}/{{articleName}}" class="basic-btn button">编辑</a>

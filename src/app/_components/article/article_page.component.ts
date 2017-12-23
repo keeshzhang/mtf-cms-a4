@@ -29,6 +29,7 @@ export class ArticlePageComponent implements OnInit {
   createTimestamp: string;
   articleName: string;
   _timestamp: any;
+  _user: any;
 
   dateFormatPipeFilter: any;
 
@@ -60,6 +61,7 @@ export class ArticlePageComponent implements OnInit {
 
         debugger;
         this.articlePage = response.data;
+        this._user = response.user;
 
     });
 
