@@ -1,18 +1,23 @@
 
 
 <div>
-  <div *ngIf="!isArticlePreview" class= "clearfix" style="width: 100%;   padding-bottom: .5em;">
+  <div *ngIf='!isArticlePreview && articlePage.article_status == "pending"' class= "clearfix" style="width: 100%;   padding-bottom: .5em;">
     <span appArticleTag="'hotpink'">{{ articlePage.type }}</span>
     <span appArticleTag="'hotpink'">{{ articlePage.tags }}</span>
   </div>
 
-  <h1 *ngIf="!isArticlePreview" class="display-4 article_title">{{ articlePage.title }} {{isArticlePreview}}</h1>
+  <h1 *ngIf='!isArticlePreview && articlePage.article_status == "pending"' class="display-4 article_title">
+    {{ articlePage.title }} {{articlePage.article_status}}</h1>
 
   <div style="    color: gray;">
-    创建于: {{ articlePage.created_at }}, 最后更新: {{ articlePage.last_updated }}
+    <span>创建于: {{ articlePage.created_at }}, </span>
+    <span>最后更新: {{ articlePage.last_updated }}, </span>
+    <span *ngIf='articlePage.article_status == "published"'>发布日期: {{ articlePage.published_at }}</span>
+    <span *ngIf='articlePage.article_status == "pending"'>未发布</span>
+    <span *ngIf='articlePage.article_status == "deleted"'>已删除</span>
   </div>
 
-  <div *ngIf="!isArticlePreview" class=" clearfix" id="editor" style="width: 100%;">
+  <div *ngIf='!isArticlePreview && articlePage.article_status == "pending"' class=" clearfix" id="editor" style="width: 100%;">
 
     <form #formData="ngForm" style="margin-top: .85em;">
 
@@ -42,20 +47,24 @@
 
       <div style="text-align: right; margin-top: 1.625em;">
         <button type="submit" (click)="onSubmit(formData)" [disabled]="!formData.valid" class="basic-btn button">保存</button>
-        <a target="_self" href="/articles/{{createTimestamp}}/{{articleName}}?preview" class="basic-btn button">预览</a>
-        <!--<button type="submit" class="basic-btn button">发布</button>-->
-        <a target="_self" href="/articles/{{createTimestamp}}/{{articleName}}/draft" class="basic-btn button">撤回</a>
+        <a target="_self" href="/articles/{{createTimestamp}}/{{articleName}}?action=preview&t={{_timestamp}}" class="basic-btn button">预览</a>
         <a target="_self" style="background-color: brown;"
-           href="/articles/{{createTimestamp}}/{{articleName}}/del" class="basic-btn button">删除</a>
+           href="/articles/{{createTimestamp}}/{{articleName}}?action=delete&t={{_timestamp}}" class="basic-btn button">删除</a>
       </div>
     </form>
 
   </div>
 
-  <div *ngIf="isArticlePreview" style="display: inline-block;position: fixed;right: 40px; bottom: 0;">
-    <a target="_self" href="/articles/{{createTimestamp}}/{{articleName}}" class="basic-btn button">编辑</a>
-    <a target="_self" href="/articles/{{createTimestamp}}/{{articleName}}/pub" class="basic-btn button">发布</a>
-  </div>
+  <form #formData="ngForm" style="margin-top: .85em;">
+    <div *ngIf='isArticlePreview || articlePage.article_status == "published"' style="display: inline-block;position: fixed;right: 40px; bottom: 0;">
+      <a *ngIf='isArticlePreview && articlePage.article_status != "published"' target="_self"
+          href="/articles/{{createTimestamp}}/{{articleName}}" class="basic-btn button">编辑</a>
+      <a *ngIf='isArticlePreview && articlePage.article_status != "published"' target="_self"
+          href="/articles/{{createTimestamp}}/{{articleName}}?action=publish&t={{_timestamp}}" class="basic-btn button">发布</a>
+      <a *ngIf='articlePage.article_status == "published"' target="_self"
+          href="/articles/{{createTimestamp}}/{{articleName}}?action=draft&t={{_timestamp}}" class="basic-btn button">撤回</a>
+    </div>
+  </form>
 
 </div>
 

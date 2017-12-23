@@ -15,6 +15,7 @@ export class ArticleService {
 
   get(createdAt: string, articleName: string): Observable<RestResponse> {
 
+    debugger;
     return this.http.get('/articles/' + createdAt + '/' + articleName + '.json')
       .map((response: RestResponse) => {
 

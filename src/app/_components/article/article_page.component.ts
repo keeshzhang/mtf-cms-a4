@@ -28,6 +28,7 @@ export class ArticlePageComponent implements OnInit {
   isArticlePreview: boolean;
   createTimestamp: string;
   articleName: string;
+  _timestamp: any;
 
   dateFormatPipeFilter: any;
 
@@ -37,7 +38,9 @@ export class ArticlePageComponent implements OnInit {
 
   ngOnInit() {
 
-    this.isArticlePreview = this.activatedRoute.snapshot.queryParams.preview != null;
+    this._timestamp = new Date().getTime();
+
+    this.isArticlePreview = this.activatedRoute.snapshot.queryParams.action == 'preview';
 
     this.activatedRoute.params.subscribe((params: Params): void => {
       this.createTimestamp = params['createTimestamp'] + '';
@@ -45,9 +48,11 @@ export class ArticlePageComponent implements OnInit {
 
     });
 
+    debugger
     this.articleService.get(this.createTimestamp, this.articleName)
       .subscribe(response => {
 
+        debugger
         if (response.error) {
           this.error = response.message[0];
           return;
