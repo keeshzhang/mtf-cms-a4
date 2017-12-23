@@ -46,6 +46,8 @@
       <textarea [froalaEditor] [(froalaModel)]="articlePage.html_content"></textarea>
 
       <div style="text-align: right; margin-top: 1.625em;">
+        <mat-checkbox  style="background-color: transparent;border: none;box-shadow: none;" class="basic-btn button"
+                       [(ngModel)]="checked">文章置顶</mat-checkbox>
         <button type="submit" (click)="onSubmit(formData)" [disabled]="!formData.valid" class="basic-btn button">保存</button>
         <a target="_self" href="/articles/{{createTimestamp}}/{{articleName}}?action=preview&t={{_timestamp}}" class="basic-btn button">预览</a>
         <a target="_self" style="background-color: brown;"
@@ -54,6 +56,7 @@
     </form>
 
   </div>
+
 
   <form *ngIf="_user" #formData="ngForm" style="margin-top: .85em;">
     <div *ngIf='isArticlePreview || articlePage.article_status == "published"' style="display: inline-block;position: fixed;right: 40px; bottom: 0;">

@@ -13,7 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // https://www.froala.com/wysiwyg-editor/docs/overview
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
-import { MatIconModule, MatToolbarModule, MatMenuModule, MatCardModule, MatButtonModule } from '@angular/material';
+// https://material.angular.io/components/checkbox/overview
+import { MatIconModule, MatToolbarModule, MatMenuModule, MatCardModule, MatButtonModule, MatCheckboxModule } from '@angular/material';
 
 // services
 import { AuthGuard, AuthenticationService, UserService,
@@ -54,6 +55,7 @@ import { DateFormatPipe } from './_pipelines/_index';
     HttpClientModule, FormsModule, BrowserAnimationsModule,
     FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
     MatIconModule, MatToolbarModule, MatMenuModule, MatCardModule, MatButtonModule,
+    MatCheckboxModule,
     routers
   ],
   providers: [

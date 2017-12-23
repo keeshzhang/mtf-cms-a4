@@ -30,11 +30,13 @@ export class ArticlePageComponent implements OnInit {
   articleName: string;
   _timestamp: any;
   _user: any;
+  checked: boolean;
 
   dateFormatPipeFilter: any;
 
   constructor(private activatedRoute: ActivatedRoute, private articleService: ArticleService) {
     this.articlePage = {};
+    this.checked = true;
   }
 
   ngOnInit() {
@@ -49,17 +51,14 @@ export class ArticlePageComponent implements OnInit {
 
     });
 
-    debugger
     this.articleService.get(this.createTimestamp, this.articleName)
       .subscribe(response => {
 
-        debugger
         if (response.error) {
           this.error = response.message[0];
           return;
         }
 
-        debugger;
         this.articlePage = response.data;
         this._user = response.user;
 
