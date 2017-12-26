@@ -17,6 +17,14 @@
     <span *ngIf='articlePage.article_status == "deleted"'>已删除</span>
   </div>
 
+
+  <div style="    color: gray;">
+    <span>文章来源:  </span>
+    <a style="color: lightseagreen;" target="_blank"
+       href="{{articlePage.article_from_url}}">
+      {{articlePage.article_from_url}}</a>
+  </div>
+
   <div *ngIf='_user && !isArticlePreview && articlePage.article_status == "pending"' class=" clearfix" id="editor" style="width: 100%;">
 
     <form #formData="ngForm" style="margin-top: .85em;">
