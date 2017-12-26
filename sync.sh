@@ -13,9 +13,9 @@ rsync -azP dist/fontawesome-webfont*.woff ../mtf-cms/src/main/resources/assets/f
 rsync -azP dist/fontawesome-webfont*.ttf ../mtf-cms/src/main/resources/assets/fontawesome-webfont.ttf
 rsync -azP dist/fontawesome-webfont*.svg ../mtf-cms/src/main/resources/assets/fontawesome-webfont.svg
 
-sed -i "" -e "s/fontawesome-webfont.[0-9a-zA-Z]*.eot/fontawesome-webfont.eot/g" ../mtf-cms/src/main/resources/assets/styles.bundle.css
-sed -i "" -e "s/fontawesome-webfont.[0-9a-zA-Z]*.woff2/fontawesome-webfont.woff2/g" ../mtf-cms/src/main/resources/assets/styles.bundle.css
-sed -i "" -e "s/fontawesome-webfont.[0-9a-zA-Z]*.woff/fontawesome-webfont.woff/g" ../mtf-cms/src/main/resources/assets/styles.bundle.css
-sed -i "" -e "s/fontawesome-webfont.[0-9a-zA-Z]*.ttf/fontawesome-webfont.ttf/g" ../mtf-cms/src/main/resources/assets/styles.bundle.css
-sed -i "" -e "s/fontawesome-webfont.[0-9a-zA-Z]*.svg/fontawesome-webfont.svg/g" ../mtf-cms/src/main/resources/assets/styles.bundle.css
+sed -i -e "s/fontawesome-webfont.[0-9a-zA-Z]*.eot/fontawesome-webfont.eot/g" ../mtf-cms/src/main/resources/assets/styles.bundle.css
+sed -i -e "s/fontawesome-webfont.[0-9a-zA-Z]*.woff2/fontawesome-webfont.woff2/g" ../mtf-cms/src/main/resources/assets/styles.bundle.css
+sed -i -e "s/fontawesome-webfont.[0-9a-zA-Z]*.woff/fontawesome-webfont.woff/g" ../mtf-cms/src/main/resources/assets/styles.bundle.css
+sed -i -e "s/fontawesome-webfont.[0-9a-zA-Z]*.ttf/fontawesome-webfont.ttf/g" ../mtf-cms/src/main/resources/assets/styles.bundle.css
+sed -i -e "s/fontawesome-webfont.[0-9a-zA-Z]*.svg/fontawesome-webfont.svg/g" ../mtf-cms/src/main/resources/assets/styles.bundle.css
 
