@@ -13,9 +13,9 @@ export class ArticleService {
 
   }
 
-  get(createdAt: string, articleName: string): Observable<RestResponse> {
+  get(createDate: string, createdAt: string, articleName: string): Observable<RestResponse> {
 
-    return this.http.get('/articles/' + createdAt + '/' + articleName + '.json')
+    return this.http.get('/articles/' + createDate + '/' + createdAt + '/' + articleName + '.json')
       .map((response: RestResponse) => {
 
         if (response.error) {
@@ -28,9 +28,9 @@ export class ArticleService {
   }
 
 
-  post(createdAt: string, articleName: string, data: any): Observable<RestResponse> {
+  post(createDate: string, createdAt: string, articleName: string, data: any): Observable<RestResponse> {
 
-    return this.http.post('/articles/' + createdAt + '/' + articleName + '.json', data)
+    return this.http.post('/articles/' + createDate + '/' + + createdAt + '/' + articleName + '.json', data)
       .map((response: RestResponse) => {
 
         if (response.error) {

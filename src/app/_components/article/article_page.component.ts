@@ -21,15 +21,17 @@ import {ArticleEntity} from '../../_entities/article.entity';
 })
 export class ArticlePageComponent implements OnInit {
 
+  _timestamp: any;
+  _user: any;
+
   state: String = '';
   articlePage: any;
   error: any;
 
   isArticlePreview: boolean;
+  createDate: string;
   createTimestamp: string;
   articleName: string;
-  _timestamp: any;
-  _user: any;
   checked: boolean;
 
   dateFormatPipeFilter: any;
@@ -46,12 +48,13 @@ export class ArticlePageComponent implements OnInit {
     this.isArticlePreview = this.activatedRoute.snapshot.queryParams.action == 'preview';
 
     this.activatedRoute.params.subscribe((params: Params): void => {
+      this.createDate = params['createDate'];
       this.createTimestamp = params['createTimestamp'] + '';
       this.articleName = params['name'];
 
     });
 
-    this.articleService.get(this.createTimestamp, this.articleName)
+    this.articleService.get(this.createDate, this.createTimestamp, this.articleName)
       .subscribe(response => {
 
         if (response.error) {
@@ -72,7 +75,7 @@ export class ArticlePageComponent implements OnInit {
       return;
     }
 
-    this.articleService.post(this.createTimestamp, this.articleName, this.articlePage)
+    this.articleService.post(this.createDate, this.createTimestamp, this.articleName, this.articlePage)
       .subscribe(response => {
 
         if (response.error) {

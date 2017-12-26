@@ -28,7 +28,7 @@ export const router: Routes = [
   { path: '404', component: IndexComponent },
   { path: 'index', component: IndexComponent },
   { path: 'login', component: IndexComponent },
-  { path: 'articles/:createTimestamp/:name', component: ArticlePageComponent },
+  { path: 'articles/:createDate/:createTimestamp/:name', component: ArticlePageComponent },
 
   { path: 'registry', component: SignupComponent },
   { path: 'login-email', component: LoginEmailComponent },    // angular router
