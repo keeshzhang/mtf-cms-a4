@@ -1,21 +1,21 @@
-<md-card *ngFor="let bill of (billList ? billList : []); let i=index" class="example-card">
-  <md-card-header>
-    <md-card-title style="margin-bottom: 12px;">
+<mat-card *ngFor="let bill of (billList ? billList : []); let i=index" class="example-card">
+  <mat-card-header>
+    <mat-card-title style="margin-bottom: 12px;">
       <a style="display:inline-block; margin-right:5px;" href="/bills?id={{bill.id}}">{{ bill.bank }}银行</a>
       <span appUserInfoCard="'hotpink'"
             appShadowX="'12px'"
             appShadowY="'6px'"
             appShadowBlur="'30px'">{{ bill.billMoney }}</span>
       <span style="float: right;">{{ bill.billExpired }}</span>
-    </md-card-title>
+    </mat-card-title>
 
 
-  </md-card-header>
+  </mat-card-header>
   <!--<md-card-actions>-->
   <!--<button md-button>LIKE</button>-->
   <!--<button md-button>SHARE</button>-->
   <!--</md-card-actions>-->
-</md-card>
+</mat-card>
 
 <div *ngIf="!billList || billList.length === 0">
   <p>您当前没有任何无账单！</p>

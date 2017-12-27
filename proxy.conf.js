@@ -14,10 +14,10 @@ const PROXY_CONFIG = [
       "/fonts",
       "/jquery",
       "/gallery"
-      , "/articles/20171226/1514264529964/5r6z5YWDMjAxOOW5tOS9leWOu+S9leS7jlKeeshaAAaABCzzliIbmnpDluIjlpoLkvZXop6Por7tf5aSW5rGH6aKR6YGT.json"
+      , "/articles/20171226/1514272955522/5qyn5YWD5pWw5YiG6ZKf5pq06LeM6YC+MzUw54K5X+eptuern+aAjuS5iOWbnuS6i1KeeshaAAaABCzzlpJbmsYfpopHpgZNf5ZKM6K6v572R.json"
 
     ],
-    target: "http://localhost:9180",
+    target: "http://localhost:9181",
     secure: false,
     bypass: function (req, res, proxyOptions) {
 

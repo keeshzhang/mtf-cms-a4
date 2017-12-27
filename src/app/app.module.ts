@@ -1,4 +1,4 @@
-import { FormsModule, } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -14,7 +14,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 // https://material.angular.io/components/checkbox/overview
-import { MatIconModule, MatToolbarModule, MatMenuModule, MatCardModule, MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { MatIconModule, MatToolbarModule, MatMenuModule, MatCardModule,
+  MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { MatSelectModule } from '@angular/material';
 
 // services
 import { AuthGuard, AuthenticationService, UserService,
@@ -52,10 +54,10 @@ import { DateFormatPipe } from './_pipelines/_index';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule, FormsModule, BrowserAnimationsModule,
+    HttpClientModule, FormsModule, ReactiveFormsModule, BrowserAnimationsModule,
     FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
     MatIconModule, MatToolbarModule, MatMenuModule, MatCardModule, MatButtonModule,
-    MatCheckboxModule,
+    MatCheckboxModule, MatSelectModule,
     routers
   ],
   providers: [

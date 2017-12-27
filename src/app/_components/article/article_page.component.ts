@@ -1,6 +1,5 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
-import { Subscription } from 'rxjs/Subscription';
+import { Component, OnInit } from '@angular/core';
+import {FormControl} from '@angular/forms';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
@@ -11,7 +10,6 @@ import { DateFormatPipe } from '../../_pipelines/_index';
 import { ActivatedRoute, Params } from '@angular/router';
 
 import { ArticleService } from '../../_services/_index';
-import {ArticleEntity} from '../../_entities/article.entity';
 
 @Component({
   selector: 'app-artile-page',
@@ -34,11 +32,23 @@ export class ArticlePageComponent implements OnInit {
   articleName: string;
   checked: boolean;
 
+  articleChannels = new FormControl();
+  articleChannelsList = ['帮助中心', '新闻资讯', '优惠活动'];
+  articleChannelSelected: any;
+
+
+  articleTypes = new FormControl();
+  articleTypesList = ['账户问题', '出入金问题', '交易问题'];
+  articleTypesSelected: any;
+
   dateFormatPipeFilter: any;
 
   constructor(private activatedRoute: ActivatedRoute, private articleService: ArticleService) {
     this.articlePage = {};
     this.checked = true;
+
+    this.articleChannelSelected =  [];
+    this.articleTypesSelected = [];
   }
 
   ngOnInit() {
@@ -65,7 +75,16 @@ export class ArticlePageComponent implements OnInit {
         this.articlePage = response.data;
         this._user = response.user;
 
-    });
+        if (this.articlePage.channel) {
+          this.articleChannelSelected = this.articlePage.channel.split(',');
+        }
+
+        if (this.articlePage.type) {
+          this.articleTypesSelected = this.articlePage.type.split(',');
+        }
+
+
+      });
 
   }
 
@@ -73,6 +92,14 @@ export class ArticlePageComponent implements OnInit {
 
     if (!formData.valid) {
       return;
+    }
+
+    if (this.articleChannelSelected.length > 0) {
+      this.articlePage.channel = this.articleChannelSelected.join(',');
+    }
+
+    if (this.articleTypesSelected.length > 0) {
+      this.articlePage.type = this.articleTypesSelected.join(',');
     }
 
     this.articleService.post(this.createDate, this.createTimestamp, this.articleName, this.articlePage)
