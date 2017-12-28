@@ -2,6 +2,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 
 // components
+import { EmptyComponent } from '../_components/empty/empty.component';
 import { IndexComponent } from '../_components/index/index.component';
 import { LoginComponent } from '../_components/login/login.component';
 import { LoginEmailComponent } from '../_components/login-email/login-email.component';
@@ -25,9 +26,9 @@ export const router: Routes = [
 
 
 
-  { path: '404', component: IndexComponent },
+  { path: '404', component: EmptyComponent },
   { path: 'index', component: IndexComponent },
-  { path: 'login', component: IndexComponent },
+  { path: 'login', component: EmptyComponent },
   { path: 'articles/:createDate/:createTimestamp/:name', component: ArticlePageComponent },
 
   { path: 'registry', component: SignupComponent },

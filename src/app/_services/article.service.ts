@@ -42,4 +42,20 @@ export class ArticleService {
 
   }
 
+
+  list(skip: number): Observable<RestResponse> {
+
+    return this.http.get('/index.json?skip=' + skip)
+      .map((response: RestResponse) => {
+
+      debugger;
+        if (response.error) {
+          return response.message[0];
+        }
+
+        return response;
+      });
+
+  }
+
 }

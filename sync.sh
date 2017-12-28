@@ -1,11 +1,17 @@
 ng build --prod
 rsync -azP dist/assets ../mtf-cms/src/main/resources
 rsync -azP dist/styles*.bundle.css ../mtf-cms/src/main/resources/assets/styles.bundle.css 
+rsync -azP dist/styles*.bundle.css.map ../mtf-cms/src/main/resources/assets/styles.bundle.css.map 
 rsync -azP dist/inline*.bundle.js ../mtf-cms/src/main/resources/assets/inline.bundle.js
+rsync -azP dist/inline*.bundle.js.map ../mtf-cms/src/main/resources/assets/inline.bundle.js.map
 rsync -azP dist/polyfills*.bundle.js ../mtf-cms/src/main/resources/assets/polyfills.bundle.js 
-#rsync -azP dist/vendor*.bundle.js ../mtf-cms/src/main/resources/assets/vendor.bundle.js 
+rsync -azP dist/polyfills*.bundle.js.map ../mtf-cms/src/main/resources/assets/polyfills.bundle.js.map
+rsync -azP dist/vendor*.bundle.js ../mtf-cms/src/main/resources/assets/vendor.bundle.js 
+rsync -azP dist/vendor*.bundle.js.map ../mtf-cms/src/main/resources/assets/vendor.bundle.js.map
 rsync -azP dist/scripts*.bundle.js ../mtf-cms/src/main/resources/assets/scripts.bundle.js 
+rsync -azP dist/scripts*.bundle.js.map ../mtf-cms/src/main/resources/assets/scripts.bundle.js.map
 rsync -azP dist/main*.bundle.js ../mtf-cms/src/main/resources/assets/main.bundle.js 
+rsync -azP dist/main*.bundle.js.map ../mtf-cms/src/main/resources/assets/main.bundle.js.map
 
 rsync -azP dist/fontawesome-webfont*.eot ../mtf-cms/src/main/resources/assets/fontawesome-webfont.eot
 rsync -azP dist/fontawesome-webfont*.woff2 ../mtf-cms/src/main/resources/assets/fontawesome-webfont.woff2

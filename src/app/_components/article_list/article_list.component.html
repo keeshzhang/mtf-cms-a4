@@ -1,0 +1,17 @@
+
+<li *ngFor="let article of _articleList">
+  <a style="color: lightseagreen;font-size: 1.2em;font-weight: bold;" href='{{article.url_escape}}'>{{ article.title }}</a>
+
+  <br />
+  <span *ngIf='article.article_status == "published"'
+        style="color: darkgoldenrod;font-size: .85em;">发布时间: {{ article.published_at }}, </span>
+
+  <span *ngIf='_user' style="color: cadetblue;font-size: .85em;">最后更新时间: {{ article.last_updated }} </span>
+  <span *ngIf='_user' style="color: crimson;font-style: oblique;font-size: .85em;">{{ article.article_status_name }}</span>
+  <br *ngIf='_user' />
+
+  <p style="color:dimgray;">{{ article.description }}</p>
+</li>
+
+<a *ngIf="!_notHaveMoreList && _skip > 0" href="javascript:void(this);" (click)="loadMore()">加载更多 ...</a>
+<a *ngIf="_notHaveMoreList && (_articleList.length > 0 || _skip > 0)" href="javascript:void(this);">没有更多了~</a>
