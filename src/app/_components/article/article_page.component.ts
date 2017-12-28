@@ -33,7 +33,7 @@ export class ArticlePageComponent implements OnInit {
   checked: boolean;
 
   articleChannels = new FormControl();
-  articleChannelsList = ['帮助中心', '新闻资讯', '优惠活动'];
+  articleChannelsList = ['帮助中心', '新闻资讯', '优惠活动', '发现底部'];
   articleChannelSelected: any;
 
 
