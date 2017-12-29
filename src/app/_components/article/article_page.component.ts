@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
+import {MatChipInputEvent} from '@angular/material';
+import {ENTER, COMMA} from '@angular/cdk/keycodes';
+
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 
-declare var jquery: any;
-declare var $: any;
+import * as $ from 'jquery';
 
 import { DateFormatPipe } from '../../_pipelines/_index';
 import { ActivatedRoute, Params } from '@angular/router';
@@ -18,6 +20,21 @@ import { ArticleService } from '../../_services/_index';
   styleUrls: ['./article_page.component.css']
 })
 export class ArticlePageComponent implements OnInit {
+
+  visible: boolean = true;
+  selectable: boolean = true;
+  removable: boolean = true;
+  addOnBlur: boolean = true;
+
+  // Enter, comma
+  separatorKeysCodes = [ENTER, COMMA];
+
+  _articleTags = [
+    { name: 'Lemon' },
+    { name: 'Lime' },
+    { name: 'Apple' },
+  ];
+
 
   _timestamp: any;
   _user: any;
@@ -55,7 +72,7 @@ export class ArticlePageComponent implements OnInit {
 
     this._timestamp = new Date().getTime();
 
-    this.isArticlePreview = this.activatedRoute.snapshot.queryParams.action == 'preview';
+    this.isArticlePreview = this.activatedRoute.snapshot.queryParams.action === 'preview';
 
     this.activatedRoute.params.subscribe((params: Params): void => {
       this.createDate = params['createDate'];
@@ -82,6 +99,18 @@ export class ArticlePageComponent implements OnInit {
         if (this.articlePage.type) {
           this.articleTypesSelected = this.articlePage.type.split(',');
         }
+
+        if (this.articlePage.tags) {
+          this._articleTags = this.articlePage.tags.split(',').map(tag => {
+            return { name: tag.trim() };
+          });
+        }
+
+        // _articleTags = [
+        //   { name: 'Lemon' },
+        //   { name: 'Lime' },
+        //   { name: 'Apple' },
+        // ];
 
 
       });
@@ -117,5 +146,38 @@ export class ArticlePageComponent implements OnInit {
 
   }
 
+
+  remove(fruit: any): void {
+
+    const index = this._articleTags.indexOf(fruit);
+
+    if (index >= 0) {
+      this._articleTags.splice(index, 1);
+      this.articlePage.tags = this._articleTags.map(tag => tag.name).join(', ');
+    }
+  }
+
+  add(event: MatChipInputEvent): void {
+
+    const input = event.input;
+    const value = event.value;
+
+    // Add our fruit
+    if ((value || '').trim()) {
+
+      const isexists = this._articleTags.filter(a => a.name.trim() === value.trim());
+
+      if (isexists.length === 0) {
+        this._articleTags.push({ name: value.trim() });
+        this.articlePage.tags = this._articleTags.map(tag => tag.name).join(', ');
+      }
+
+    }
+
+    // Reset the input value
+    if (input) {
+      input.value = '';
+    }
+  }
 
 }

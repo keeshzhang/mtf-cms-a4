@@ -15,8 +15,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 // https://material.angular.io/components/checkbox/overview
 import { MatIconModule, MatToolbarModule, MatMenuModule, MatCardModule,
-  MatButtonModule, MatCheckboxModule } from '@angular/material';
-import { MatSelectModule } from '@angular/material';
+  MatButtonModule, MatCheckboxModule, MatChipInputEvent, MatSelectModule,
+  MatChipsModule} from '@angular/material';
 
 // services
 import { AuthGuard, AuthenticationService, UserService,
@@ -57,7 +57,7 @@ import { DateFormatPipe } from './_pipelines/_index';
     HttpClientModule, FormsModule, ReactiveFormsModule, BrowserAnimationsModule,
     FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
     MatIconModule, MatToolbarModule, MatMenuModule, MatCardModule, MatButtonModule,
-    MatCheckboxModule, MatSelectModule,
+    MatCheckboxModule, MatSelectModule,  MatChipsModule,
     routers
   ],
   providers: [
