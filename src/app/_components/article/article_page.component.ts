@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {MatChipInputEvent} from '@angular/material';
-import {ENTER, COMMA} from '@angular/cdk/keycodes';
+import {ENTER, COMMA, TAB} from '@angular/cdk/keycodes';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
@@ -27,13 +27,9 @@ export class ArticlePageComponent implements OnInit {
   addOnBlur: boolean = true;
 
   // Enter, comma
-  separatorKeysCodes = [ENTER, COMMA];
+  separatorKeysCodes = [ENTER, COMMA, TAB];
 
-  _articleTags = [
-    { name: 'Lemon' },
-    { name: 'Lime' },
-    { name: 'Apple' },
-  ];
+  _articleTags = [];
 
 
   _timestamp: any;
